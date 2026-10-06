@@ -1,0 +1,69 @@
+:root {
+  --eci-red: #B30000;
+  --eci-red-hover: #8B0000;
+  --eci-dark: #212529;
+  --eci-light: #f8f9fa;
+}
+
+body {
+  background-color: var(--eci-light);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Botones corporativos ECI */
+.btn-eci {
+  background-color: var(--eci-red) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.btn-eci:hover {
+  background-color: var(--eci-red-hover) !important;
+}
+
+.btn-outline-eci {
+  color: var(--eci-red) !important;
+  border-color: var(--eci-red) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-eci:hover {
+  background-color: var(--eci-red) !important;
+  color: white !important;
+}
+
+/* Badges corporativos */
+.badge-eci {
+  background-color: var(--eci-red) !important;
+  color: white;
+}
+
+/* Sidebar activo */
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  background-color: var(--eci-red) !important;
+}
+
+/* Tablas compactas expandibles */
+.table-compact th, .table-compact td {
+  padding: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.row-expandable {
+  cursor: pointer;
+}
+
+.row-expanded-content {
+  background-color: #f1f3f5;
+  border-left: 4px solid var(--eci-red);
+}
+
+/* Tarjetas */
+.hover-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+}
