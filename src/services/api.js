@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://eciradar-bba0gzd3a6cdbeey.chilecentral-01.azurewebsites.net/api/v1',
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8080/api/v1',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -21,15 +21,16 @@ api.interceptors.request.use(
   }
 );
 
-// Interceptor para manejar errores globales (ej: 401 Unauthorized)
+// Interceptor para manejar errores globales (ej: 401 Unauthorized o 403 por token vencido)
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response && error.response.status === 401) {
-      // Si el token expira o es inválido, cerramos sesión
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      window.location.href = '/login';
+    if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+      if (!window.location.pathname.includes('/login')) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        window.location.href = '/login';
+      }
     }
     return Promise.reject(error);
   }
